@@ -26,7 +26,7 @@ namespace ReversePostfix
 					continue;
 				}
 
-				double second = stack.Pop();
+				double second = stack.Count() > 0 ? stack.Pop() : 0;
 				double first = stack.Count() > 0 ? stack.Pop() : 0;
 				double ans = 0;
 				switch (element)
@@ -52,24 +52,6 @@ namespace ReversePostfix
 			}
 			return stack.Pop();
 		}
-
-		// ---------------------------------------------------------------------------
-		public static double CalculateFactorial(double input)
-		{
-			if (input > 100)
-			{
-				throw new InvalidOperationException("This will take too long for the interview.");
-			}
-
-			var num = input;
-			for (var i = 1; i < input; ++i)
-			{
-				num *= input - i;
-			}
-
-			return num;
-		}
-
 		public static void RunTestCase(double expectedResult, IEnumerable<string> input)
 		{
 			var result = Calculate(input);
